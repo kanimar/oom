@@ -21,14 +21,14 @@ namespace Task2
         private int bet = 2;
 
         //constructor
-        public Scratch_card(string gname)
+        public Scratch_card(string Name)
         {
-            Name = gname;
+            this.Name = Name;
             balance = 10;
         }
 
-        //getter
-        public string Name { get; set; }
+        //properties
+        public string Name { get;}
         public decimal balance { get; private set; }
 
         public void get_instructions()
@@ -88,7 +88,7 @@ namespace Task2
             if (cnt.Any())
             {
                 var gewinn = cnt.First();
-                Console.WriteLine($"{gewinn} Gewinn.");
+                Console.WriteLine($"{gewinn}$ Gewinn.");
                 balance += gewinn;
             }
             else
@@ -112,35 +112,35 @@ namespace Task2
         /// Create a new lottery game
         /// </summary>
         /// <param name="name">name of lottery game</param>
-        /// <param name="amnt_main_balls">The total amount of main balls in-game. (It must not be 0)</param>
-        /// <param name="amnt_bonus_balls">The total amount of bonus balls in-game. (If there are no bonus balls, please enter 0)</param>
-        /// <param name="main_balls_to_draw">Number of main balls to be drawn. (It must be smaller than the total amount of balls in-game)</param>
-        /// <param name="bonus_balls_to_draw">Number of bonus balls to be drawn.</param>
+        /// <param name="main_balls">The total amount of main balls in-game. (It must not be 0)</param>
+        /// <param name="bonus_balls">The total amount of bonus balls in-game. (If there are no bonus balls, please enter 0)</param>
+        /// <param name="main_to_draw">Number of main balls to be drawn. (It must be smaller than the total amount of balls in-game)</param>
+        /// <param name="bonus_to_draw">Number of bonus balls to be drawn.</param>
 
-        public Lottery(string name, byte amnt_main_balls, byte amnt_bonus_balls,
-           byte main_balls_to_draw, byte bonus_balls_to_draw)
+        public Lottery(string Name, byte main_balls, byte bonus_balls,
+           byte main_to_draw, byte bonus_to_draw)
         {
             //error handling
-            if (name.Length < 3) throw new ArgumentException("Invalid lottery name");
+            if (Name.Length < 3) throw new ArgumentException("Invalid lottery name");
             //if (amnt_main_balls == 0 || main_balls_to_draw == 0) throw new ArgumentException("Lottery with no main balls is not allowed");
             //if (amnt_main_balls <= main_balls_to_draw) throw new ArgumentException("Amount of the main balls to be drawn must not be greater or equal to the total amount of main balls");
             //if (amnt_bonus_balls > 0 && amnt_bonus_balls <= bonus_balls_to_draw) throw new ArgumentException("Amount of the bonus balls to be drawn must not be greater or equal to the total amount of main balls");
 
             //assignments
-            Name = name;
-            main_balls = amnt_main_balls;
-            bonus_balls = amnt_bonus_balls;
-            main_to_draw = main_balls_to_draw;
-            bonus_to_draw = bonus_balls_to_draw;
+            this.Name = Name;
+            this.main_balls = main_balls;
+            this.bonus_balls = bonus_balls;
+            this.main_to_draw = main_to_draw;
+            this.bonus_to_draw = bonus_to_draw;
         }
 
         //properties
         public List<string> gamedays { get { return is_gameday; } }
-        public string Name { get; set; }
-        public byte main_balls { get; set; }
-        public byte bonus_balls { get; set; }
-        public byte main_to_draw { get; set; }
-        public byte bonus_to_draw { get; set; }
+        public string Name { get; }
+        public byte main_balls { get; }
+        public byte bonus_balls { get; }
+        public byte main_to_draw { get; }
+        public byte bonus_to_draw { get; }
 
         //functions
         Func<List<int>, byte, byte, List<int>> iter = iterate;

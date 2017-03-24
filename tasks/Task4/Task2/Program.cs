@@ -10,20 +10,20 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-                var games = new IGambling[]
-               {
+            var games = new IGambling[]
+           {
                     new Lottery("Lotto", 45, 45, 6, 1),
                     new Lottery("Euromillions", 50, 12, 5, 2),
                     new Lottery("Joker", 90, 0, 5, 0),
                     new Scratch_card("Cash"),
                     new Scratch_card("Schatztruhe")
-                 };
+             };
 
-                foreach (var g in games)
-                {
-                    g.get_instructions();
-                    g.print_list(g.generate_rand(), g.Name);
-                }
+            foreach (var g in games)
+            {
+                g.get_instructions();
+                g.print_list(g.generate_rand(), g.Name);
+            }
 
             var sc = new Scratch_card("Lebenlang");
             sc.play();
